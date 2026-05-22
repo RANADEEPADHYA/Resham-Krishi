@@ -1,0 +1,27 @@
+# ── Frontend ──────────────────────────────────────────────────────────────────
+node_modules/
+dist/
+.DS_Store
+*.local
+
+# ── Backend ───────────────────────────────────────────────────────────────────
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/.env
+
+# Model weights — too large for git (place in backend/models/ manually)
+backend/models/*.pth
+backend/models/*.pt
+backend/models/*.onnx
+backend/models/*.bin
+
+# ── Python venvs ──────────────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+
+# ── IDE / OS ──────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+Thumbs.db
