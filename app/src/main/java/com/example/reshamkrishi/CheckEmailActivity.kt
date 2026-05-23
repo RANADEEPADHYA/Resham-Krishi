@@ -63,23 +63,6 @@ class CheckEmailActivity :
 
             btnOpenEmail.isEnabled = false
 
-            lifecycleScope.launch {
-
-                delay(2000)
-
-                Toast.makeText(
-                    this@CheckEmailActivity,
-                    "Opening Email App...",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                startActivity(
-                    Intent(
-                        this@CheckEmailActivity,
-                        ResetPasswordActivity::class.java
-                    )
-                )
-            }
         }
 
         // Sign In Text

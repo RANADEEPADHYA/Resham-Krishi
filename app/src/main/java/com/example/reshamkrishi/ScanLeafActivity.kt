@@ -7,6 +7,7 @@ import android.hardware.camera2.CameraManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -14,12 +15,23 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.reshamkrishi.api.FileUtils
+import com.example.reshamkrishi.api.PredictionResponse
+import com.example.reshamkrishi.api.RetrofitClient
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.File
+import java.io.FileOutputStream
 
 class ScanLeafActivity : AppCompatActivity() {
 
     private lateinit var layoutFlash: LinearLayout
     private lateinit var layoutGallery: LinearLayout
-    private lateinit var btnCapture: android.widget.FrameLayout
+    private lateinit var btnCapture: FrameLayout
 
     private var flashOn = false
 
@@ -43,9 +55,13 @@ class ScanLeafActivity : AppCompatActivity() {
         setContentView(R.layout.activity_scan_leaf)
 
         // Views
+
         btnBack = findViewById(R.id.btnBack)
+
         layoutFlash = findViewById(R.id.layoutFlash)
+
         layoutGallery = findViewById(R.id.layoutGallery)
+
         btnCapture = findViewById(R.id.btnCapture)
 
         // Camera Flash
@@ -61,6 +77,8 @@ class ScanLeafActivity : AppCompatActivity() {
 
             toggleFlash()
         }
+
+        // Back Button
 
         btnBack.setOnClickListener {
 
@@ -150,38 +168,211 @@ class ScanLeafActivity : AppCompatActivity() {
         )
     }
 
+    // ================= URI TO FILE =================
+
+    private fun uriToFile(uri: Uri): File {
+
+        val inputStream =
+            contentResolver.openInputStream(uri)
+
+        val file =
+            File(cacheDir, "upload_image.jpg")
+
+        val outputStream =
+            FileOutputStream(file)
+
+        inputStream?.copyTo(outputStream)
+
+        inputStream?.close()
+
+        outputStream.close()
+
+        return file
+    }
+
+    // ================= UPLOAD IMAGE =================
+
+    private fun uploadImageToBackend(
+
+        imageUri: Uri
+    ) {
+
+        try {
+
+            val file =
+
+                FileUtils.uriToFile(
+
+                    this@ScanLeafActivity,
+
+                    imageUri
+                )
+
+            val requestFile =
+
+                file.asRequestBody(
+
+                    "image/*"
+                        .toMediaTypeOrNull()
+                )
+
+            val body =
+
+                MultipartBody.Part
+                    .createFormData(
+
+                        "file",
+
+                        file.name,
+
+                        requestFile
+                    )
+
+            // =========================================
+            // API CALL
+            // =========================================
+
+            RetrofitClient.api
+                .predictSilkworm(body)
+
+                .enqueue(object :
+                    retrofit2.Callback<PredictionResponse> {
+
+                    override fun onResponse(
+
+                        call: retrofit2.Call<PredictionResponse>,
+
+                        response: retrofit2.Response<PredictionResponse>
+                    ) {
+
+                        if (response.isSuccessful) {
+
+                            val result =
+                                response.body()
+
+                            Toast.makeText(
+
+                                this@ScanLeafActivity,
+
+                                "Disease: ${result?.disease}\nConfidence: ${result?.confidence}%",
+
+                                Toast.LENGTH_LONG
+
+                            ).show()
+
+                        } else {
+
+                            Toast.makeText(
+
+                                this@ScanLeafActivity,
+
+                                "Prediction Failed",
+
+                                Toast.LENGTH_LONG
+
+                            ).show()
+                        }
+                    }
+
+                    override fun onFailure(
+
+                        call: retrofit2.Call<PredictionResponse>,
+
+                        t: Throwable
+                    ) {
+
+                        Toast.makeText(
+
+                            this@ScanLeafActivity,
+
+                            t.message,
+
+                            Toast.LENGTH_LONG
+
+                        ).show()
+                    }
+                })
+
+        } catch (e: Exception) {
+
+            Toast.makeText(
+
+                this,
+
+                e.message,
+
+                Toast.LENGTH_LONG
+
+            ).show()
+        }
+    }
+
     // ================= RESULT =================
 
     override fun onActivityResult(
+
         requestCode: Int,
+
         resultCode: Int,
+
         data: Intent?
     ) {
 
         super.onActivityResult(
+
             requestCode,
+
             resultCode,
+
             data
         )
 
-        if (requestCode == GALLERY_REQUEST) {
+        // ================= GALLERY =================
 
-            val imageUri: Uri? = data?.data
+        if (
 
-            Toast.makeText(
-                this,
-                "Gallery Image Selected",
-                Toast.LENGTH_SHORT
-            ).show()
+            requestCode == GALLERY_REQUEST &&
+
+            resultCode == RESULT_OK
+        ) {
+
+            val imageUri: Uri? =
+                data?.data
+
+            imageUri?.let {
+
+                uploadImageToBackend(it)
+            }
         }
 
-        if (requestCode == CAMERA_REQUEST) {
+        // ================= CAMERA =================
 
-            Toast.makeText(
-                this,
-                "Photo Captured",
-                Toast.LENGTH_SHORT
-            ).show()
+        if (
+
+            requestCode == CAMERA_REQUEST &&
+
+            resultCode == RESULT_OK
+        ) {
+
+            val imageUri: Uri? =
+                data?.data
+
+            imageUri?.let {
+
+                uploadImageToBackend(it)
+
+            } ?: run {
+
+                Toast.makeText(
+
+                    this,
+
+                    "Camera image unavailable",
+
+                    Toast.LENGTH_SHORT
+
+                ).show()
+            }
         }
     }
 }

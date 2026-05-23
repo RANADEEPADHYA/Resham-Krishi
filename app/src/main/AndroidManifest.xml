@@ -90,6 +90,10 @@
             android:exported="false"
             android:theme="@style/Theme.ReshamKrishi" />
 
+        <activity
+            android:name=".ResultActivity"
+            android:exported="false"/>
+
     </application>
 
 </manifest>
