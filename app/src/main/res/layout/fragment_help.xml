@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/into_second_background"
+    tools:context=".HelpFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="30dp">
+
+        <!-- Header -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Get assistance for using the Silkworm Disease Detection App."
+            android:textColor="@color/gray_text"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_regular" />
+
+        <!-- Banner Card -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/border_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="18dp">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/customer_service"
+                    app:backgroundTint="@color/primary_green"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Need Assistance?"
+                        android:textColor="@color/primary_green"
+                        android:textSize="24sp"
+                        android:fontFamily="@font/poppins_bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact our support team for app issues, disease detection help, and farming guidance."
+                        android:textColor="@color/gray_text"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_regular" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- FAQ Section -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Frequently Asked Questions"
+            android:textColor="@color/primary_green"
+            android:textSize="24sp"
+            android:fontFamily="@font/poppins_bold" />
+
+        <!-- FAQ Card 1 -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="How to scan silkworm disease?"
+                    android:textColor="@color/primary_green"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins_bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Open the Scan section, capture a clear image of the silkworm, and wait for AI detection results."
+                    android:textColor="@color/gray_text"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_regular" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- FAQ Card 2 -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="How accurate is disease detection?"
+                    android:textColor="@color/primary_green"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins_bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="The app uses AI-based image analysis trained on multiple silkworm disease datasets."
+                    android:textColor="@color/gray_text"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_regular" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Contact Support -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Contact Support"
+            android:textColor="@color/primary_green"
+            android:textSize="24sp"
+            android:fontFamily="@font/poppins_bold" />
+
+        <EditText
+            android:id="@+id/etHelpMessage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_edittext"
+            android:gravity="top|start"
+            android:hint="Describe your issue or question..."
+            android:padding="16dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/gray_text"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_regular" />
+
+        <Button
+            android:id="@+id/btnSendHelp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="25dp"
+            android:text="Send Message"
+            android:textAllCaps="false"
+            android:textSize="28sp"
+            android:fontFamily="@font/poppins_bold"
+            app:backgroundTint="@null"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_button_green" />
+
+    </LinearLayout>
+
+</ScrollView>

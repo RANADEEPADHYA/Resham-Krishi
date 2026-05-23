@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/into_second_background"
+    tools:context=".ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/primary_green"
+            android:textSize="36sp"
+            android:fontFamily="@font/poppins_bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manage your account and farm details"
+            android:textColor="@color/gray_text"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_regular"/>
+
+        <!-- Profile Card -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Top Section -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Profile Image -->
+
+                    <FrameLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp">
+
+                        <ImageView
+                            android:id="@+id/imgProfile"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_person"
+                            android:background="@drawable/bg_circle_light_green"/>
+
+                        <ImageView
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_gravity="bottom|end"
+                            android:background="@drawable/bg_circle_light_green"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_camera"
+                            app:tint="@color/primary_green"/>
+
+                    </FrameLayout>
+
+                    <!-- User Info -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtProfileName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ramesh Kumar"
+                            android:textColor="@color/primary_green"
+                            android:textSize="30sp"
+                            android:fontFamily="@font/poppins_bold"/>
+
+                        <!-- Verified Badge -->
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/bg_verified"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="12dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="12dp"
+                            android:paddingBottom="6dp">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/check_mark"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="Verified Farmer"
+                                android:textColor="@color/primary_green"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/poppins_regular"/>
+
+                        </LinearLayout>
+
+                        <!-- Role -->
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                app:tint="@color/primary_green"
+                                android:src="@drawable/ic_person" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Silk Farmer"
+                                android:textColor="@color/primary_green"
+                                android:textSize="25sp"/>
+                        </LinearLayout>
+
+                        <!-- Phone -->
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                app:tint="@color/primary_green"
+                                android:src="@drawable/ic_phone" />
+
+                            <TextView
+                                android:id="@+id/txtProfilePhone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="+91 98765 43210"
+                                android:textColor="@color/primary_green"
+                                android:textSize="25sp"
+                                android:fontFamily="@font/poppins_regular"/>
+                        </LinearLayout>
+
+                        <!-- Email -->
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                app:tint="@color/primary_green"
+                                android:src="@drawable/ic_mail"/>
+
+                            <TextView
+                                android:id="@+id/txtProfileEmail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="ramesh@gmail.com"
+                                android:textColor="@color/primary_green"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/poppins_regular"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Stats -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:background="#F2F5EF"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:weightSum="3">
+
+                    <!-- Total Scans -->
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="128"
+                            android:textColor="@color/text_dark"
+                            android:textSize="24sp"
+                            android:fontFamily="@font/poppins_bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Scans"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/gray_text"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <!-- Healthy -->
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="90"
+                            android:textColor="@color/text_dark"
+                            android:textSize="24sp"
+                            android:fontFamily="@font/poppins_bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Healthy"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/gray_text"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <!-- Disease -->
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="38"
+                            android:textColor="@color/text_dark"
+                            android:textSize="24sp"
+                            android:fontFamily="@font/poppins_bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Diseases"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/gray_text"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEditProfile"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Edit Profile"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:fontFamily="@font/poppins_bold"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_button_green"/>
+
+    </LinearLayout>
+
+
+
+</ScrollView>

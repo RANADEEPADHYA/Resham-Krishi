@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/into_thrid_background"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="50dp"
+    android:paddingBottom="80dp">
+
+    <!-- Heading Small -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Smart Guidance,"
+        android:textColor="@color/primary_green"
+        android:textSize="22sp"
+        android:fontFamily="@font/poppins_semibold" />
+
+    <!-- Main Heading -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Healthier Farms,\nBetter Tomorrow"
+        android:textColor="@color/primary_green"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="36sp" />
+
+    <!-- Green Line -->
+    <View
+        android:layout_width="100dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_button_green" />
+
+
+    <!-- Description -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect with experts and protect your silkworm farm with smart guidance."
+        android:textColor="@color/text_dark"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="4dp"
+        android:fontFamily="@font/poppins_regular"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp">
+
+        <!-- Card 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_card"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bg_circle_light_green"
+                android:padding="10dp"
+                android:src="@drawable/ic_consultation" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expert Consultation"
+                    android:textColor="@color/primary_green"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_semibold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get advice from sericulture experts and solve your farming problems."
+                    android:textColor="@color/text_dark"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_regular"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Card 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_card"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bg_circle_light_green"
+                android:padding="10dp"
+                android:src="@drawable/ic_community" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Farmer Community"
+                    android:textColor="@color/primary_green"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_semibold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Connect with fellow farmers, share experiences and grow together."
+                    android:textColor="@color/text_dark"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_regular"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Card 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_card"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bg_circle_light_green"
+                android:padding="10dp"
+                android:src="@drawable/ic_notification" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alerts &amp; Notifications"
+                    android:textColor="@color/primary_green"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_semibold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stay updated with important alerts and timely farming tips."
+                    android:textColor="@color/text_dark"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_regular"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Card 4 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bg_circle_light_green"
+                android:padding="10dp"
+                android:src="@drawable/ic_book" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Learn &amp; Prevent"
+                    android:textColor="@color/primary_green"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_semibold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Learn about diseases, best practices and prevention methods."
+                    android:textColor="@color/text_dark"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_regular"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+    <!-- Button -->
+    <LinearLayout
+        android:id="@+id/btnBegin"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_button_green"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let’s Begin"
+            android:textColor="@color/white"
+            android:layout_marginStart="25dp"
+            android:textSize="28sp"
+            android:fontFamily="@font/poppins_bold" />
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/ic_arrow" />
+
+    </LinearLayout>
+
+    <!-- Dots -->
+
+</LinearLayout>

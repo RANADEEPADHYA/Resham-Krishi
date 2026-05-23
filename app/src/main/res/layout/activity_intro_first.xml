@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/intro_last_background"
+    android:gravity="center_horizontal">
+
+    <!-- Top Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Status Space -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="70dp"/>
+
+        <!-- App Logo -->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:background="@drawable/circle_bg_all"
+            android:contentDescription="@string/app_logo"
+            android:src="@drawable/app_logo_resham_krishi" />
+
+        <!-- App Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="36sp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/text_dark"
+            android:layout_gravity="center"/>
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_description"
+            android:textColor="@color/primary_green"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+        <!-- Divider -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="1dp"
+                android:background="@color/primary_green"/>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="8dp"
+                android:src="@drawable/ic_leaf_green" />
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="1dp"
+                android:background="@color/primary_green"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Bottom Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingLeft="28dp"
+        android:paddingRight="28dp"
+        android:paddingBottom="80dp">
+
+        <!-- Heading -->
+        <TextView
+            android:id="@+id/headingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Healthy Silkworms,\nBetter Future"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="28sp"/>
+
+        <!-- Small Divider -->
+        <View
+            android:layout_width="70dp"
+            android:layout_height="2dp"
+            android:background="@color/white" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_light"/>
+
+        <!-- Indicators -->
+
+        <!-- Get Started Button -->
+        <!-- Continue Button -->
+        <Button
+            android:id="@+id/btnGetStated"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_button_white"
+            android:text="@string/get_started"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_green"
+            android:textSize="28sp"
+            app:backgroundTint="@null"
+            android:fontFamily="@font/poppins_bold" />
+
+    </LinearLayout>
+
+</LinearLayout>

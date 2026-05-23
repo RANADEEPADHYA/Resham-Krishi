@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <!-- Main Menu -->
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_account_green"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/nav_leaf_scan"
+            android:icon="@drawable/ic_leaf_green"
+            android:title="Leaf Scan" />
+
+        <item
+            android:id="@+id/nav_disease_scan"
+            android:icon="@drawable/ic_disease_green"
+            android:title="Disease Scan" />
+
+
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_history_green"
+            android:title="History" />
+
+        <item
+            android:id="@+id/nav_chatbot"
+            android:icon="@drawable/ic_chatbot_green"
+            android:title="AI Chatbot" />
+
+        <item
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/ic_notification"
+            android:title="Notifications &amp; Alerts" />
+
+
+    </group>
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_community"
+            android:icon="@drawable/ic_community"
+            android:title="Community" />
+
+        <item
+            android:id="@+id/nav_disease_info"
+            android:icon="@drawable/ic_info"
+            android:title="Disease info" />
+
+        <item
+            android:id="@+id/nav_climate_info"
+            android:icon="@drawable/ic_cloud_green"
+            android:title="Climate info" />
+
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_help_green"
+            android:title="Help &amp; Support" />
+
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/ic_feedback_green"
+            android:title="Send Feedback" />
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_setting_green"
+            android:title="Settings" />
+
+    </group>
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share_green"
+            android:title="Share Us" />
+
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@drawable/ic_star_green"
+            android:title="Rate Us" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout_green"
+            android:title="Logout" />
+
+    </group>
+
+</menu>

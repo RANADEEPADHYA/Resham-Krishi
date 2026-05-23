@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rootLayout"
+    tools:context=".ClimateInfoFragment"
+    android:background="@drawable/bg_weather">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="30dp">
+
+        <!-- Top Row -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtCity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Kolkata"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:fontFamily="@font/poppins_bold"/>
+
+            <Spinner
+                android:id="@+id/spinnerCity"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:background="#33FFFFFF"
+                android:padding="10dp"/>
+        </LinearLayout>
+
+        <!-- Temperature -->
+
+        <TextView
+            android:id="@+id/txtTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="23°"
+            android:textColor="@color/white"
+            android:textSize="90sp"
+            android:fontFamily="@font/poppins_bold"/>
+
+        <!-- Weather -->
+
+        <!-- WEATHER TYPE -->
+
+        <TextView
+            android:id="@+id/txtWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Thunderstorm"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:fontFamily="@font/poppins_bold"/>
+
+        <!-- WEATHER DESCRIPTION -->
+
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Heavy Rain Expected"
+            android:textColor="#E5E5E5"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_medium"/>
+
+        <!-- WEATHER DETAILS CARD -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@color/accent_red"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:weightSum="3"
+            >
+
+            <!-- WIND -->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wind"
+                    android:textColor="#EAEAEA"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_medium"/>
+
+                <TextView
+                    android:id="@+id/txtWind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="12 km/h"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/poppins_bold"/>
+
+            </LinearLayout>
+
+            <!-- HUMIDITY -->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Humidity"
+                    android:textColor="#EAEAEA"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_medium"/>
+
+                <TextView
+                    android:id="@+id/txtHumidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="85%"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/poppins_bold"/>
+
+            </LinearLayout>
+
+            <!-- PRESSURE -->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pressure"
+                    android:textColor="#EAEAEA"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_medium"/>
+
+                <TextView
+                    android:id="@+id/txtPressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="1012"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/poppins_bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 7 Days Forecast -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7 Days Forecast"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="40dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/forecastContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Day 1 -->
+
+                <LinearLayout
+                    android:id="@+id/cardDay1"
+                    android:layout_width="150dp"
+                    android:layout_height="170dp"
+                    android:layout_marginEnd="14dp"
+                    android:background="@drawable/bg_stormy"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/txtDay1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mon"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                    <TextView
+                        android:id="@+id/txtWeather1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Thunderstorm"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                    <TextView
+                        android:id="@+id/txtTemp1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="24°"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                </LinearLayout>
+
+                <!-- Day 2 -->
+
+                <LinearLayout
+                    android:id="@+id/cardDay2"
+                    android:layout_width="120dp"
+                    android:layout_height="170dp"
+                    android:layout_marginEnd="14dp"
+                    android:background="@drawable/bg_cloudy"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/txtDay2"
+                        android:text="Tue"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/txtWeather2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Cloudy"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                    <TextView
+                        android:id="@+id/txtTemp2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="26°"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                </LinearLayout>
+
+                <!-- Day 3 -->
+
+                <LinearLayout
+                    android:id="@+id/cardDay3"
+                    android:layout_width="120dp"
+                    android:layout_height="170dp"
+                    android:layout_marginEnd="14dp"
+                    android:background="@drawable/bg_rainy"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/txtDay3"
+                        android:text="Wed"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/txtWeather3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Rainy"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                    <TextView
+                        android:id="@+id/txtTemp3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="22°"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                </LinearLayout>
+
+                <!-- Day 4 -->
+
+                <LinearLayout
+                    android:id="@+id/cardDay4"
+                    android:layout_width="120dp"
+                    android:layout_height="170dp"
+                    android:layout_marginEnd="14dp"
+                    android:background="@drawable/bg_sunny"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/txtDay4"
+                        android:text="Thu"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/txtWeather4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Sunny"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                    <TextView
+                        android:id="@+id/txtTemp4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="25°"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                </LinearLayout>
+
+                <!-- Day 5 -->
+
+                <LinearLayout
+                    android:id="@+id/cardDay5"
+                    android:layout_width="120dp"
+                    android:layout_height="170dp"
+                    android:layout_marginEnd="14dp"
+                    android:background="@drawable/bg_cloudy"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/txtDay5"
+                        android:text="Fri"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/txtWeather5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Cloudy"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                    <TextView
+                        android:id="@+id/txtTemp5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="27°"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                </LinearLayout>
+
+                <!-- Day 6 -->
+
+                <LinearLayout
+                    android:id="@+id/cardDay6"
+                    android:layout_width="120dp"
+                    android:layout_height="170dp"
+                    android:layout_marginEnd="14dp"
+                    android:background="@drawable/bg_rainy"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/txtDay6"
+                        android:text="Sat"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/txtWeather6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Rainy"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                    <TextView
+                        android:id="@+id/txtTemp6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="23°"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                </LinearLayout>
+
+                <!-- Day 7 -->
+
+                <LinearLayout
+                    android:id="@+id/cardDay7"
+                    android:layout_width="120dp"
+                    android:layout_height="170dp"
+                    android:background="@drawable/bg_stormy"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/txtDay7"
+                        android:text="Sun"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/txtWeather7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Thunderstorm"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                    <TextView
+                        android:id="@+id/txtTemp7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="21°"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        android:fontFamily="@font/poppins_bold"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+</ScrollView>

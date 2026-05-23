@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/into_second_background"
+    android:paddingTop="60dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="80dp">
+
+    <!-- Welcome Text -->
+    <TextView
+        android:id="@+id/txtWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_to"
+        android:textColor="@color/primary_green"
+        android:textSize="22sp"
+        android:fontFamily="@font/poppins_semibold" />
+
+    <!-- App Name -->
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/primary_green"
+        android:textSize="36sp"
+        android:fontFamily="@font/poppins_bold" />
+
+    <!-- Green Line -->
+    <View
+        android:layout_width="100dp"
+        android:layout_height="5dp"
+        android:background="@drawable/bg_button_green" />
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="An intelligent solution to identify silkworm diseases using image recognition and AI technology."
+        android:textColor="@color/text_dark"
+        android:textSize="18sp"
+        android:lineSpacingExtra="4dp"
+        android:fontFamily="@font/poppins_regular" />
+
+    <!-- Silkworm Image -->
+    <ImageView
+        android:id="@+id/imgSilkworm"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/intro_imag"
+        android:background="@drawable/image_rounded_bg"
+        android:outlineProvider="background"
+        android:clipToOutline="true"/>
+
+    <!-- Scrollable Languages -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_button_green"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_leaf_white" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Healthy silkworms, Better yield."
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Early detection. Timely action."
+                android:textColor="@color/white_text"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="10dp"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideInset"
+        android:scrollbarThumbVertical="@drawable/custom_scrollbar_thumb"
+        android:scrollbarTrackVertical="@drawable/custom_scrollbar_track"
+        android:scrollbarSize="10dp"
+        android:fadeScrollbars="false"
+        android:overScrollMode="never"
+        tools:ignore="NestedWeights,RtlSymmetry">
+
+        <!-- Features Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Detect Diseases -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_card"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <!-- Icon Circle -->
+                <LinearLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_circle_light_green"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_camera" />
+                </LinearLayout>
+
+                <!-- Text -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Detect Diseases Instantly"
+                        android:textColor="@color/primary_green"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_semibold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload a silkworm image and get instant disease prediction."
+                        android:textColor="@color/text_dark"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_regular"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Accurate -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_card"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <!-- Icon Circle -->
+                <LinearLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_circle_light_green"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_shield" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Accurate &amp; Reliable"
+                        android:textColor="@color/primary_green"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_semibold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AI-powered model for accurate detection and recommendations."
+                        android:textColor="@color/text_dark"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_regular"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Learn -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_card"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <!-- Icon Circle -->
+                <LinearLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_circle_light_green"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_book" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Learn &amp; Prevent"
+                        android:textColor="@color/primary_green"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_semibold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Know about diseases, symptoms, causes and prevention methods."
+                        android:textColor="@color/text_dark"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Better -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_card"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <!-- Icon Circle -->
+                <LinearLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_circle_light_green"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_groth" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Better Sericulture"
+                        android:textColor="@color/primary_green"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_semibold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Timely detection helps in better care and higher productivity."
+                        android:textColor="@color/text_dark"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_regular"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+    <!-- Indicators -->
+
+    <!-- Continue Button -->
+    <Button
+        android:id="@+id/btnContinue"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:backgroundTint="@null"
+        android:background="@drawable/bg_button_green"
+        android:text="@string/btn_continue"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:fontFamily="@font/poppins_bold" />
+
+</LinearLayout>

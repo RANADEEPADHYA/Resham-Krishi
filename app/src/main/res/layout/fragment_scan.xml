@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/into_second_background"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="40dp">
+
+
+        <!-- ================= TITLE ================= -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Select Scan Type"
+            android:textColor="@color/primary_green"
+            android:textSize="36sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="70dp"
+                android:layout_height="1dp"
+                android:background="@color/primary_green" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginHorizontal="8dp"
+                android:src="@drawable/ic_leaf_green" />
+
+            <View
+                android:layout_width="70dp"
+                android:layout_height="1dp"
+                android:background="@color/primary_green" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Scan leaves or silkworms to detect diseases and get instant results"
+            android:textAlignment="center"
+            android:textColor="@color/gray_text"
+            android:textSize="18sp" />
+
+        <!-- ================= LEAF CARD ================= -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_card"
+            android:elevation="8dp"
+            android:orientation="vertical"
+            android:padding="22dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <!-- Left -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <!-- Icon -->
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/bg_green_circle"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_leaf_green"
+                            app:tint="@color/primary_green" />
+
+                        <!-- Title -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Stage - 1 :\nLeaf Scan"
+                            android:textColor="@color/primary_green"
+                            android:textSize="23sp" />
+                    </LinearLayout>
+
+                    <!-- Description -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Scan mulberry leaves to identify health condition and detect diseases."
+                        android:textColor="@color/gray_text"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <!-- Leaf Image -->
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/scan_first_img" />
+
+            </LinearLayout>
+
+            <!-- Features -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/bg_button_green" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Detect leaf diseases"
+                    android:textColor="@color/primary_green"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/bg_button_green" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Check leaf quality"
+                    android:textColor="@color/primary_green"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_bold" />
+            </LinearLayout>
+
+            <!-- Button -->
+            <LinearLayout
+                android:id="@+id/scanLeaf"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_button_green"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="90dp"
+                android:paddingEnd="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Scan Leaf"
+                    android:textColor="@color/white"
+                    android:textSize="28sp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="30dp"
+                    android:src="@drawable/ic_arrow"
+                    app:tint="@color/white" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!-- ================= SILKWORM CARD ================= -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_card"
+            android:elevation="8dp"
+            android:orientation="vertical"
+            android:padding="22dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <!-- Left -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <!-- Icon -->
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/bg_green_circle"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_disease_green"
+                            app:tint="@color/primary_green" />
+
+                        <!-- Title -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Stage - 2 :\nDisease Scan"
+                            android:textColor="@color/primary_green"
+                            android:textSize="23sp" />
+                    </LinearLayout>
+
+                    <!-- Description -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Scan silkworms to detect diseases and get treatment recommendations."
+                        android:textColor="@color/gray_text"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <!-- Leaf Image -->
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/scan_second_img" />
+
+            </LinearLayout>
+
+            <!-- Features -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/bg_button_green" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Identify silkworm diseases"
+                    android:textColor="@color/primary_green"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingStart="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/bg_button_green" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Get treatment suggestions"
+                    android:textColor="@color/primary_green"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_bold" />
+            </LinearLayout>
+
+            <!-- Button -->
+            <LinearLayout
+                android:id="@+id/scanDisease"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_button_green"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="30dp"
+                android:paddingEnd="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Scan Silkworm"
+                    android:textColor="@color/white"
+                    android:textSize="28sp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/ic_arrow"
+                    app:tint="@color/white" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

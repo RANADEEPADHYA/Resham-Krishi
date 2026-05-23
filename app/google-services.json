@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "862172958432",
+    "project_id": "resham-krishi-login-pw-id",
+    "storage_bucket": "resham-krishi-login-pw-id.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862172958432:android:4a9d171037aa42d6f0ca85",
+        "android_client_info": {
+          "package_name": "com.example.reshamkrishi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "862172958432-g6ik0mskmimpsqig6dldb6cc2egsq9fg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.reshamkrishi",
+            "certificate_hash": "bb10d307dbc37fa39b2fbc8967f221d097eab8a8"
+          }
+        },
+        {
+          "client_id": "862172958432-0vcaal7dkhrb7dv1jsb953guobn9ktik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLp0Y408Sw_Muv4WCiGPLv_v5lsNb8LYw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "862172958432-0vcaal7dkhrb7dv1jsb953guobn9ktik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

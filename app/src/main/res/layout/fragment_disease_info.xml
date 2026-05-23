@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/into_second_background"
+    tools:context=".DiseaseInfoFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The below diease info came from following likes -"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="20sp"
+                android:textColor="@color/primary_green"/>
+
+            <TextView
+                android:id="@+id/txtResearchLink2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="       1.   Silkworm Diseases: From Foundational Knowledge to Recent Research Advances"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="20sp"
+                android:textColor="@color/info_blue"/>
+            <TextView
+                android:id="@+id/txtResearchLink1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="       2.   Diagnosis of Pebrine Disease in Silkworm Using Molecular Methods"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="20sp"
+                android:textColor="@color/info_blue"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- ================= PEBRINE ================= -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/pebrine"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <!-- Header -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Pebrine Disease"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textSize="28sp"
+                                android:textColor="@color/primary_green"/>
+
+                            <ImageView
+                                android:id="@+id/btnPebrineExpand"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:padding="8dp"
+                                android:src="@drawable/down_arrow"
+                                app:tint="@color/primary_green"/>
+                        </LinearLayout>
+
+                        <!-- Hidden Layout -->
+                        <LinearLayout
+                            android:id="@+id/layoutPebrineDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Protozoan Disease"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textSize="20sp"
+                                android:textColor="@color/accent_red"/>
+
+                            <!-- Basic Info -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Basic Information"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_dark"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Pebrine is caused by Nosema bombycis protozoan parasite. It affects embryo, larva, pupa and moth stages of silkworm."
+                                android:fontFamily="@font/poppins_medium"
+                                android:textSize="16sp"
+                                android:textColor="@color/gray_text"/>
+
+                            <!-- Symptoms -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Symptoms"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_dark"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="• Black pepper-like spots\n• Weak larvae\n• Slow growth\n• Poor cocoon formation\n• Secondary infection"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textSize="16sp"
+                                android:textColor="@color/gray_text"/>
+
+                            <!-- Cure -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Prevention &amp; Control"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_dark"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="• Use disease-free eggs\n• Treat eggs with 2% formalin\n• Disinfect rearing house and tools\n• Maintain hygiene and sanitation"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textSize="16sp"
+                                android:textColor="@color/gray_text"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- ================= MUSCARDINE ================= -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/muscardine"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Muscardine Disease"
+                                android:textColor="@color/primary_green"
+                                android:textSize="28sp" />
+
+                            <ImageView
+                                android:id="@+id/btnMuscardineExpand"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:padding="8dp"
+                                android:src="@drawable/down_arrow"
+                                app:tint="@color/primary_green"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layoutMuscardineDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fungal Disease"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textSize="20sp"
+                                android:textColor="@color/accent_red"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Basic Information"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_dark"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Muscardine is a fungal disease caused by Beauveria species. White and green muscardine are common in silkworms."
+                                android:fontFamily="@font/poppins_medium"
+                                android:textSize="16sp"
+                                android:textColor="@color/gray_text"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Symptoms"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_dark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="• Swollen larvae\n• Hard body after death\n• Chalky appearance\n• Stiff and mummified worms"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textSize="16sp"
+                                android:textColor="@color/gray_text"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Prevention &amp; Control"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_dark"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="• Disinfect rearing field\n• Maintain cleanliness\n• Remove diseased worms\n• Burn infected worms away from rearing area"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textSize="16sp"
+                                android:textColor="@color/gray_text"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- ================= FLACHERIE ================= -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/flacheire"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Flacherie Disease"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textSize="28sp"
+                                android:textColor="@color/primary_green"/>
+
+                            <ImageView
+                                android:id="@+id/btnFlacherieExpand"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:padding="8dp"
+                                android:src="@drawable/down_arrow"
+                                app:tint="@color/primary_green"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layoutFlacherieDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bacterial Disease"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textSize="20sp"
+                                android:textColor="@color/accent_red"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Basic Information"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_dark"
+                                android:layout_marginTop="10dp"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Flacherie is caused by Streptococci and Bacillus bacteria. It is common during summer crops."
+                                android:fontFamily="@font/poppins_medium"
+                                android:textSize="16sp"
+                                android:textColor="@color/gray_text"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Symptoms"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_dark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="• Sluggish movement\n• Loss of appetite\n• Vomiting fluid\n• Swollen thorax\n• Softened body\n• Blackened thorax"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textSize="16sp"
+                                android:textColor="@color/gray_text"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Prevention &amp; Control"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_dark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="• Proper sanitation and hygiene\n• Avoid overcrowding\n• Proper bed cleaning\n• Avoid contaminated leaves\n• Use bleaching powder + lime (1:9)"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textSize="16sp"
+                                android:textColor="@color/gray_text"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- ================= GRASSERIE ================= -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/grasserie"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Grasserie Disease"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textSize="28sp"
+                                android:textColor="@color/primary_green"/>
+
+                            <ImageView
+                                android:id="@+id/btnGrasserieExpand"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:padding="8dp"
+                                android:src="@drawable/down_arrow"
+                                app:tint="@color/primary_green"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layoutGrasserieDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Viral Disease"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textSize="20sp"
+                                android:textColor="@color/accent_red"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Basic Information"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_dark"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Grasserie is a viral disease caused by Borrelina virus and affects silkworm health seriously."
+                                android:fontFamily="@font/poppins_medium"
+                                android:textSize="16sp"
+                                android:textColor="@color/gray_text"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Symptoms"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_dark"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="• Sluggish movement\n• Shiny skin\n• Yellowish body\n• Intersegmental swelling\n• Rectal protrusion\n• Worms hang upside down"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textSize="16sp"
+                                android:textColor="@color/gray_text"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Prevention &amp; Control"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textSize="18sp"
+                                android:textColor="@color/text_dark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="• Maintain proper hygiene\n• Avoid overcrowding\n• Proper ventilation\n• Destroy diseased worms\n• Proper bed cleaning\n• Sprinkle bleaching powder + lime"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textSize="16sp"
+                                android:textColor="@color/gray_text"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

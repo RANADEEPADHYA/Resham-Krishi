@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/into_second_background"
+    tools:context=".CommunityFragment"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="this service will be provided when the app is connected to communitys"
+        android:textColor="@color/primary_green"
+        android:textSize="28sp"
+        android:fontFamily="@font/poppins_bold"/>
+
+</FrameLayout>

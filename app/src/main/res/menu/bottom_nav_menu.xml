@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home_green"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/nav_chatbot"
+        android:icon="@drawable/ic_chatbot_green"
+        android:title="Chatbot" />
+
+    <!-- EMPTY CENTER SPACE -->
+    <item
+        android:id="@+id/nav_scan"
+        android:icon="@drawable/ic_camera"
+        android:title="Scan"/>
+    <item
+        android:id="@+id/nav_history"
+        android:icon="@drawable/ic_history_green"
+        android:title="History" />
+
+    <item
+        android:id="@+id/nav_shop"
+        android:icon="@drawable/ic_shop_green"
+        android:title="Shop" />
+
+</menu>

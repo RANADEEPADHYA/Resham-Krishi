@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/into_second_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="30dp"
+        android:paddingHorizontal="20dp">
+
+        <!-- Header -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Help us improve the Silkworm Disease Detection App"
+            android:textSize="18sp"
+            android:textColor="@color/primary_green"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_regular"/>
+
+        <!-- Top Banner -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/border_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="18dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/feedback"
+                    app:backgroundTint="@color/primary_green"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your feedback matters!"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/primary_green"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Share your experience and suggestions to help us improve the app."
+                        android:textSize="14sp"
+                        android:textColor="#666"
+                        android:layout_marginTop="6dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Experience Section -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How was your experience?"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="20sp"
+            android:textColor="@color/primary_green"
+            android:layout_marginTop="25dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="5">
+
+            <!-- Very Bad -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imgVeryBad"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/unhappy"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Very Bad"
+                    android:textSize="14sp"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <!-- Bad -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imgBad"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/unhappy"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bad"
+                    android:textSize="14sp"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <!-- Average -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imgAverage"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/nutral_face"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Average"
+                    android:textSize="14sp"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <!-- Good -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imgGood"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/good"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Good"
+                    android:textSize="14sp"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <!-- Excellent -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imgExcellent"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/good"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Excellent"
+                    android:textSize="14sp"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Feedback -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What is your feedback about?"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="20sp"
+            android:textColor="@color/primary_green"
+            android:layout_marginTop="30dp"/>
+
+        <EditText
+            android:id="@+id/feedback"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/bg_edittext"
+            android:gravity="top|start"
+            android:padding="16dp"
+            android:hint="Write your feedback about app performance, disease detection, features, or any issue..."
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/gray_text"
+            android:fontFamily="@font/poppins_regular"/>
+
+        <!-- Advice -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What is your advice about improvement?"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="20sp"
+            android:textColor="@color/primary_green"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/advice"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/bg_edittext"
+            android:gravity="top|start"
+            android:padding="16dp"
+            android:hint="Share your suggestions and ideas to improve the silkworm disease detection app..."
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/gray_text"
+            android:fontFamily="@font/poppins_regular"/>
+
+
+        <Button
+            android:id="@+id/btnSubmitFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:text="Submit Feedback"
+            android:textAllCaps="false"
+            android:textSize="28sp"
+            android:fontFamily="@font/poppins_bold"
+            app:backgroundTint="@null"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_button_green"/>
+
+    </LinearLayout>
+
+</ScrollView>
