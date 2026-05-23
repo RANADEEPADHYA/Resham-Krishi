@@ -1,0 +1,13 @@
+# Core API (no PyTorch needed for Demo Mode)
+fastapi>=0.115.6
+uvicorn[standard]>=0.34.0
+python-multipart>=0.0.20
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# ── PyTorch (only needed when loading real model weights) ────────────────────
+# Install ONLY after freeing disk space (~750 MB needed for CPU build).
+# Without this the server runs in DEMO MODE automatically — all features work.
+#
+# CPU:  pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+# GPU:  pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
