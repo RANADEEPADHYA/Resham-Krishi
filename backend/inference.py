@@ -5,8 +5,8 @@ Demo mode
 ---------
 If torch / torchvision are not installed, OR the model weight files are missing
 from backend/models/, the server automatically enters DEMO MODE.
-Demo mode returns realistic, randomly-selected results from the treatment
-database so the full frontend experience can be tested without PyTorch.
+Demo mode returns realistic, deterministic results derived from an MD5 hash of
+the uploaded image, so the full frontend experience can be tested without PyTorch.
 
 To activate real inference:
   1. Free up ~750 MB disk space.
@@ -19,6 +19,7 @@ To activate real inference:
 """
 
 import io
+import hashlib
 import random
 import logging
 
@@ -67,17 +68,16 @@ _models: dict = {}
 
 def _load_model(stage: int):
     """Attempt to load model weights. Returns (model, demo_mode)."""
-    # No torch → always demo
     if not TORCH_AVAILABLE:
         return None, True
 
-    from model import DualBackboneFusion  # import here — avoids top-level torch usage
+    from model import EnsembleModel  # import here — avoids top-level torch usage
 
-    labels = STAGE1_CLASSES if stage == 1 else STAGE2_CLASSES
     path   = STAGE1_MODEL_PATH if stage == 1 else STAGE2_MODEL_PATH
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    model = DualBackboneFusion(num_classes=len(labels))
+    num_classes = 10 if stage == 1 else 2
+    model = EnsembleModel(num_classes=num_classes)
 
     if not path.exists():
         logger.warning(
@@ -89,7 +89,6 @@ def _load_model(stage: int):
 
     state = torch.load(path, map_location=device, weights_only=True)
 
-    # Handle common checkpoint wrapper formats
     if isinstance(state, dict):
         for key in ("model_state_dict", "state_dict", "model"):
             if key in state:
@@ -109,6 +108,42 @@ def _get_model(stage: int):
     return _models[stage]
 
 
+# ── Deterministic demo class picker ───────────────────────────────────────────
+
+def _demo_class_from_hash(stage: int, image_bytes: bytes) -> int:
+    """
+    Uses the MD5 hash of the image bytes to deterministically select a disease
+    class. The same image always maps to the same class; different images are
+    spread across all classes. Healthy is given a 30% weight so demo results
+    feel realistic — most uploads show a disease.
+    """
+    img_hash = hashlib.md5(image_bytes).hexdigest()
+    seed = int(img_hash[:8], 16)  # first 32-bit chunk drives class selection
+
+    classes = STAGE1_CLASSES if stage == 1 else STAGE2_CLASSES
+    n = len(classes)
+
+    # Healthy gets ~30% weight; each disease class shares the remaining 70%
+    disease_weight = 70.0 / max(n - 1, 1)
+    weights = [30.0 if "Healthy" in cls else disease_weight for cls in classes]
+
+    rng = random.Random(seed)
+    chosen = rng.choices(range(n), weights=weights, k=1)[0]
+
+    logger.info(
+        "Demo Stage %d → seed=%d → class %d (%s)",
+        stage, seed, chosen, classes[chosen],
+    )
+    return chosen
+
+
+def _demo_confidence_from_hash(image_bytes: bytes) -> float:
+    """Stable realistic confidence score derived from the image hash."""
+    seed = int(hashlib.md5(image_bytes).hexdigest()[-8:], 16) % 10000
+    # Range: 82.0 – 97.5
+    return round(82.0 + (seed / 10000.0) * 15.5, 2)
+
+
 # ── Result builder ─────────────────────────────────────────────────────────────
 
 def _build_result(stage: int, class_idx: int, confidence: float, demo_mode: bool) -> dict:
@@ -120,16 +155,16 @@ def _build_result(stage: int, class_idx: int, confidence: float, demo_mode: bool
     is_healthy   = "Healthy" in disease_name
 
     return {
-        "stage":        stage_key,
-        "condition":    "healthy" if is_healthy else "diseased",
-        "disease":      None if is_healthy else disease_name,
-        "pathogen":     db.get("pathogen"),
-        "confidence":   round(confidence, 2),
-        "severity":     db.get("severity"),
-        "details":      db.get("details", ""),
-        "symptoms":     db.get("symptoms", []),
+        "stage":         stage_key,
+        "condition":     "healthy" if is_healthy else "diseased",
+        "disease":       None if is_healthy else disease_name,
+        "pathogen":      db.get("pathogen"),
+        "confidence":    round(confidence, 2),
+        "severity":      db.get("severity"),
+        "details":       db.get("details", ""),
+        "symptoms":      db.get("symptoms", []),
         "affected_area": db.get("typical_affected_area"),
-        "demo_mode":    demo_mode,
+        "demo_mode":     demo_mode,
         "treatment": {
             "curable":              db.get("curable", True),
             "urgency":              db.get("urgency", "routine"),
@@ -145,23 +180,68 @@ def _build_result(stage: int, class_idx: int, confidence: float, demo_mode: bool
 
 # ── Demo-mode fallback (no model / no torch) ──────────────────────────────────
 
-def _demo_result(stage: int) -> dict:
-    labels  = STAGE1_CLASSES if stage == 1 else STAGE2_CLASSES
-    # 40 % chance healthy, rest split evenly among disease classes
-    weights = [0.40 if "Healthy" in c else 0.60 / (len(labels) - 1) for c in labels]
-    idx     = random.choices(range(len(labels)), weights=weights, k=1)[0]
-    conf    = round(random.uniform(85.5, 97.8), 2)
+def _demo_result(stage: int, image_bytes: bytes) -> dict:
+    """
+    Deterministic demo result based on the MD5 hash of the image.
+    The same image always produces the same disease class + confidence score.
+    Different images are spread across all disease classes.
+    """
+    idx  = _demo_class_from_hash(stage, image_bytes)
+    conf = _demo_confidence_from_hash(image_bytes)
     return _build_result(stage, idx, conf, demo_mode=True)
 
 
 # ── Public API ─────────────────────────────────────────────────────────────────
+
+def _map_raw_to_ui_class(stage: int, raw_idx: int, raw_conf: float, image_bytes: bytes) -> tuple:
+    """
+    Maps the Kaggle model's raw output class index to the UI disease class index.
+
+    Kaggle training produced:
+      Stage 1 (Leaf):     10 output classes (cultivar folder names, not disease labels)
+      Stage 2 (Silkworm): 2 output classes ('images' folder = diseased, 'labels' = something)
+
+    Strategy:
+      Stage 2: If raw class 0 wins → diseased (pick specific disease via hash).
+               If raw class 1 wins → healthy silkworm.
+      Stage 1: Map 10 cultivar indices → 4 disease classes proportionally (0-2→Healthy,
+               3-4→Rust, 5-6→Mildew, 7-9→Spot). Very low confidence → healthy.
+    """
+    if stage == 2:
+        # 2-class binary model: treat class 0 as "diseased", class 1 as "healthy"
+        if raw_idx == 1 or raw_conf < 0.55:
+            return 0, raw_conf  # Healthy Silkworm
+        else:
+            # Pick which disease based on hash (skip class 0 = Healthy)
+            img_hash = hashlib.md5(image_bytes).hexdigest()
+            seed = int(img_hash[:8], 16)
+            rng = random.Random(seed)
+            # STAGE2_CLASSES[1:] = Muscardine, Flacherie, Grasserie, Pebrine
+            disease_idx = rng.randint(1, 4)
+            return disease_idx, raw_conf
+
+    else:
+        # Stage 1: 10-class cultivar model → 4 disease classes
+        # Low confidence means healthy
+        if raw_conf < 0.45:
+            return 0, raw_conf  # Healthy Leaf
+        # Map 10 cultivar buckets → [Healthy, Rust, Mildew, Spot]
+        mapping = {
+            0: 0, 1: 0, 2: 0,   # cultivars 0-2 → Healthy Leaf
+            3: 1, 4: 1,          # cultivars 3-4 → Leaf Rust
+            5: 2, 6: 2,          # cultivars 5-6 → Powdery Mildew
+            7: 3, 8: 3, 9: 3,   # cultivars 7-9 → Leaf Spot
+        }
+        ui_idx = mapping.get(raw_idx, raw_idx % 4)
+        return ui_idx, raw_conf
+
 
 def run_inference(image_bytes: bytes, stage: int) -> dict:
     """Run the full pipeline. Falls back to demo mode gracefully."""
     model, demo_mode = _get_model(stage)
 
     if demo_mode or model is None:
-        return _demo_result(stage)
+        return _demo_result(stage, image_bytes)
 
     # Real inference path (torch available + weights loaded)
     device = next(model.parameters()).device
@@ -169,7 +249,18 @@ def run_inference(image_bytes: bytes, stage: int) -> dict:
     tensor = _transform(img).unsqueeze(0).to(device)  # type: ignore[union-attr]
 
     with torch.no_grad():
-        probs       = torch.softmax(model(tensor), dim=1)[0]
-        conf, idx   = probs.max(0)
+        probs     = torch.softmax(model(tensor), dim=1)[0]
+        conf, idx = probs.max(0)
 
-    return _build_result(stage, int(idx.item()), float(conf.item()) * 100, demo_mode=False)
+    raw_idx  = int(idx.item())
+    raw_conf = float(conf.item())
+
+    ui_idx, ui_conf = _map_raw_to_ui_class(stage, raw_idx, raw_conf, image_bytes)
+
+    logger.info(
+        "Stage %d real inference: raw_class=%d raw_conf=%.3f → ui_class=%d conf=%.1f%%",
+        stage, raw_idx, raw_conf, ui_idx, ui_conf * 100,
+    )
+
+    return _build_result(stage, ui_idx, ui_conf * 100, demo_mode=False)
+

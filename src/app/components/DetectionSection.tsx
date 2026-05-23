@@ -2,9 +2,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  Upload, Microscope, AlertTriangle, CheckCircle, XCircle,
+  Upload, Microscope, CheckCircle, XCircle,
   ChevronRight, RefreshCw, Leaf, Bug, Thermometer, Droplets,
-  Info, FlaskConical, ShieldAlert, Sprout, AlertCircle,
+  Info, FlaskConical, ShieldAlert, Sprout, AlertCircle, PlayCircle, Sparkles,
 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -135,6 +135,41 @@ function getRandomFallback(stage: Stage): AnalysisResult {
   const pool = stage === "leaf" ? MOCK_LEAF : MOCK_SILKWORM;
   return pool[Math.floor(Math.random() * pool.length)];
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Demo sample metadata (label + which mock index to use)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const DEMO_LEAF_SAMPLES = [
+  { label: "Leaf Rust",       emoji: "🍂", index: 0 },
+  { label: "Healthy Leaf",    emoji: "🌿", index: 1 },
+  { label: "Powdery Mildew",  emoji: "🍃", index: 2 },
+];
+
+const DEMO_SILKWORM_SAMPLES = [
+  { label: "White Muscardine", emoji: "🐛", index: 0 },
+  { label: "Healthy Worm",     emoji: "✨", index: 1 },
+  { label: "Grasserie (NPV)",  emoji: "⚠️", index: 2 },
+];
+
+// Placeholder gradient images (data-URIs) used as mock image previews in demo
+const DEMO_LEAF_SVGS = [
+  // rust — orange
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280'%3E%3Crect width='400' height='280' fill='%231a2e1a'/%3E%3Cellipse cx='200' cy='140' rx='120' ry='90' fill='%23234d20' opacity='.7'/%3E%3Ccircle cx='160' cy='120' r='18' fill='%23c9a227' opacity='.8'/%3E%3Ccircle cx='220' cy='150' r='12' fill='%23e8821a' opacity='.9'/%3E%3Ccircle cx='180' cy='165' r='9' fill='%23c9a227' opacity='.7'/%3E%3Ccircle cx='240' cy='115' r='14' fill='%23e8821a' opacity='.8'/%3E%3Ctext x='200' y='260' text-anchor='middle' fill='%23c9a227' font-size='13' font-family='sans-serif'%3ELeaf Rust — Demo Image%3C/text%3E%3C/svg%3E",
+  // healthy — green
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280'%3E%3Crect width='400' height='280' fill='%230d1f0d'/%3E%3Cellipse cx='200' cy='130' rx='130' ry='95' fill='%2352b788' opacity='.85'/%3E%3Cellipse cx='200' cy='130' rx='80' ry='55' fill='%2374c69d' opacity='.5'/%3E%3Cline x1='200' y1='50' x2='200' y2='210' stroke='%2340916c' stroke-width='3'/%3E%3Ctext x='200' y='265' text-anchor='middle' fill='%2374c69d' font-size='13' font-family='sans-serif'%3EHealthy Leaf — Demo Image%3C/text%3E%3C/svg%3E",
+  // powdery mildew — grey
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280'%3E%3Crect width='400' height='280' fill='%231a1a2e'/%3E%3Cellipse cx='200' cy='135' rx='125' ry='88' fill='%23234d20' opacity='.6'/%3E%3Cellipse cx='200' cy='125' rx='90' ry='55' fill='%23d0d0d0' opacity='.35'/%3E%3Ccircle cx='170' cy='115' r='22' fill='%23e0e0e0' opacity='.4'/%3E%3Ccircle cx='230' cy='140' r='18' fill='%23cccccc' opacity='.45'/%3E%3Ctext x='200' y='262' text-anchor='middle' fill='%23aaa' font-size='13' font-family='sans-serif'%3EPowdery Mildew — Demo Image%3C/text%3E%3C/svg%3E",
+];
+
+const DEMO_SILKWORM_SVGS = [
+  // muscardine — white
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280'%3E%3Crect width='400' height='280' fill='%231a1a1a'/%3E%3Cellipse cx='200' cy='140' rx='110' ry='50' fill='%23e8e8e8' opacity='.8'/%3E%3Ccircle cx='100' cy='140' r='28' fill='%23f0f0f0' opacity='.9'/%3E%3Ccircle cx='305' cy='140' r='20' fill='%23ddd' opacity='.8'/%3E%3Cellipse cx='200' cy='140' rx='110' ry='50' fill='none' stroke='%23aaa' stroke-width='2' stroke-dasharray='6,4'/%3E%3Ctext x='200' y='255' text-anchor='middle' fill='%23ccc' font-size='12' font-family='sans-serif'%3EWhite Muscardine — Demo Image%3C/text%3E%3C/svg%3E",
+  // healthy
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280'%3E%3Crect width='400' height='280' fill='%230d1f0d'/%3E%3Cellipse cx='200' cy='140' rx='115' ry='48' fill='%2352b788' opacity='.75'/%3E%3Ccircle cx='95' cy='140' r='30' fill='%2374c69d' opacity='.85'/%3E%3Ccircle cx='310' cy='140' r='22' fill='%2352b788' opacity='.8'/%3E%3Ctext x='200' y='258' text-anchor='middle' fill='%2374c69d' font-size='12' font-family='sans-serif'%3EHealthy Silkworm — Demo Image%3C/text%3E%3C/svg%3E",
+  // grasserie — shiny
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='280'%3E%3Crect width='400' height='280' fill='%231a0d0d'/%3E%3Cellipse cx='200' cy='140' rx='115' ry='52' fill='%23a0522d' opacity='.5'/%3E%3Cellipse cx='200' cy='130' rx='90' ry='38' fill='%23ffd700' opacity='.25'/%3E%3Ccircle cx='95' cy='140' r='30' fill='%23cd853f' opacity='.7'/%3E%3Ccircle cx='315' cy='140' r='22' fill='%23b8860b' opacity='.75'/%3E%3Ctext x='200' y='258' text-anchor='middle' fill='%23e8821a' font-size='12' font-family='sans-serif'%3EGrasserie (NPV) — Demo Image%3C/text%3E%3C/svg%3E",
+];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Sub-components
@@ -333,6 +368,8 @@ export function DetectionSection() {
   const [analyzeStep, setAnalyzeStep]   = useState("");
   const [demoMode, setDemoMode]         = useState(false);
   const [apiError, setApiError]         = useState<string | null>(null);
+  const [showDemoPanel, setShowDemoPanel] = useState(false);
+  const [demoSampleIdx, setDemoSampleIdx] = useState(0);
 
   // GSAP entrance animation
   useEffect(() => {
@@ -385,7 +422,14 @@ export function DetectionSection() {
   };
 
   const analyzeImage = async () => {
-    if (!imagePreview || !selectedFile) return;
+    if (!imagePreview) return;
+
+    // If in demo mode (no real file), re-run the demo simulation
+    if (!selectedFile || demoMode) {
+      await runDemo(demoSampleIdx);
+      return;
+    }
+
     setAnalyzing(true);
     setProgress(0);
     setResult(null);
@@ -451,10 +495,49 @@ export function DetectionSection() {
     setAnalyzeStep("");
     setDemoMode(false);
     setApiError(null);
+    setShowDemoPanel(false);
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
+  // ── Run Demo (no backend, no real image required) ──────────────────────────
+  const runDemo = async (idx?: number) => {
+    const sampleIdx = idx ?? demoSampleIdx;
+    const pool      = activeStage === "leaf" ? MOCK_LEAF         : MOCK_SILKWORM;
+    const svgPool   = activeStage === "leaf" ? DEMO_LEAF_SVGS    : DEMO_SILKWORM_SVGS;
+    const mockResult = pool[sampleIdx];
+    const mockImage  = svgPool[sampleIdx];
+
+    setShowDemoPanel(false);
+    setDemoSampleIdx(sampleIdx);
+    setImagePreview(mockImage);
+    setSelectedFile(null);
+    setResult(null);
+    setApiError(null);
+    setDemoMode(true);
+    setAnalyzing(true);
+    setProgress(0);
+
+    const steps = [
+      "Loading demo sample...",
+      "Extracting EfficientNet-B0 features...",
+      "Extracting ResNet-50 features...",
+      "Fusing feature representations...",
+      "Running classification head...",
+      "Generating diagnosis report...",
+    ];
+    for (let i = 0; i < steps.length; i++) {
+      setAnalyzeStep(steps[i]);
+      await new Promise((r) => setTimeout(r, 380 + Math.random() * 220));
+      setProgress(((i + 1) / steps.length) * 100);
+    }
+    await new Promise((r) => setTimeout(r, 180));
+
+    setResult(mockResult);
+    setAnalyzing(false);
+  };
+
   const stageLabel = activeStage === "leaf" ? "Mulberry Leaf" : "Silkworm";
+  const demoSamples = activeStage === "leaf" ? DEMO_LEAF_SAMPLES : DEMO_SILKWORM_SAMPLES;
 
   return (
     <section id="detect" ref={sectionRef} className="relative py-24">
@@ -481,8 +564,8 @@ export function DetectionSection() {
           </p>
         </div>
 
-        {/* ── Stage tabs ──────────────────────────────────────────────── */}
-        <div className="flex gap-3 justify-center mb-10">
+        {/* ── Stage tabs + Try Demo ────────────────────────────────────── */}
+        <div className="flex flex-wrap gap-3 justify-center mb-8">
           {([
             { id: "leaf"     as Stage, icon: <Leaf className="w-4 h-4" />,  label: "Stage 1 — Mulberry Leaf",  accent: "#74c69d" },
             { id: "silkworm" as Stage, icon: <Bug  className="w-4 h-4" />,  label: "Stage 2 — Silkworm",       accent: "#c9a227" },
@@ -503,9 +586,59 @@ export function DetectionSection() {
               {tab.label}
             </button>
           ))}
+
+          {/* Try Demo button */}
+          <button
+            onClick={() => setShowDemoPanel((v) => !v)}
+            disabled={analyzing}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-[1.03] disabled:opacity-40 disabled:cursor-not-allowed"
+            style={{
+              background: showDemoPanel
+                ? "rgba(168,85,247,0.18)"
+                : "rgba(168,85,247,0.08)",
+              border: showDemoPanel
+                ? "1px solid rgba(168,85,247,0.5)"
+                : "1px solid rgba(168,85,247,0.25)",
+              color: "#c084fc",
+              boxShadow: showDemoPanel ? "0 0 24px rgba(168,85,247,0.2)" : "none",
+            }}>
+            <Sparkles className="w-4 h-4" />
+            Try Demo
+          </button>
         </div>
 
-        {/* ── API error / demo banner ─────────────────────────────────── */}
+        {/* ── Demo sample picker panel ─────────────────────────────────── */}
+        {showDemoPanel && (
+          <div
+            className="mb-8 rounded-2xl overflow-hidden"
+            style={{ background: "rgba(168,85,247,0.06)", border: "1px solid rgba(168,85,247,0.2)" }}
+          >
+            <div className="p-5 flex flex-wrap gap-3">
+              {demoSamples.map((s, i) => (
+                <button
+                  key={s.label}
+                  onClick={() => runDemo(i)}
+                  className="flex items-center gap-2.5 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-[1.04] active:scale-[0.97]"
+                  style={{
+                    background: demoSampleIdx === i && demoMode
+                      ? "rgba(168,85,247,0.2)"
+                      : "rgba(255,255,255,0.05)",
+                    border: demoSampleIdx === i && demoMode
+                      ? "1px solid rgba(168,85,247,0.5)"
+                      : "1px solid rgba(255,255,255,0.1)",
+                    color: "rgba(255,255,255,0.85)",
+                  }}
+                >
+                  <span style={{ fontSize: "1.2rem" }}>{s.emoji}</span>
+                  <span>{s.label}</span>
+                  <PlayCircle className="w-3.5 h-3.5 ml-1" style={{ color: "#c084fc", opacity: 0.7 }} />
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── API error banner ─────────────────────────────────────────── */}
         {apiError && (
           <div className="mb-6 flex items-start gap-3 px-5 py-4 rounded-xl"
             style={{ background: "rgba(255,193,7,0.08)", border: "1px solid rgba(255,193,7,0.25)" }}>
@@ -514,12 +647,14 @@ export function DetectionSection() {
           </div>
         )}
 
-        {demoMode && !apiError && result && (
-          <div className="mb-6 flex items-center gap-2 px-4 py-2.5 rounded-xl"
-            style={{ background: "rgba(201,162,39,0.06)", border: "1px solid rgba(201,162,39,0.2)" }}>
-            <Info className="w-3.5 h-3.5 shrink-0" style={{ color: "#c9a227" }} />
-            <span className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>
-              Demo mode — results are illustrative. Start the backend server with real model weights for live predictions.
+        {/* ── Demo mode banner (active result) ─────────────────────────── */}
+        {demoMode && result && (
+          <div className="mb-6 flex items-center gap-2.5 px-4 py-2.5 rounded-xl"
+            style={{ background: "rgba(168,85,247,0.08)", border: "1px solid rgba(168,85,247,0.25)" }}>
+            <Sparkles className="w-3.5 h-3.5 shrink-0" style={{ color: "#c084fc" }} />
+            <span className="text-xs font-medium" style={{ color: "#c084fc" }}>DEMO MODE</span>
+            <span className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
+              — Illustrative results. Start the backend server with real model weights for live predictions.
             </span>
           </div>
         )}
@@ -533,8 +668,16 @@ export function DetectionSection() {
               style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(10px)" }}>
               <div className="p-6">
                 <h3 className="text-white text-lg font-medium mb-4 flex items-center gap-2">
-                  <Upload className="w-5 h-5" style={{ color: "#c9a227" }} />
-                  Upload {stageLabel} Image
+                  {demoMode
+                    ? <Sparkles className="w-5 h-5" style={{ color: "#c084fc" }} />
+                    : <Upload className="w-5 h-5" style={{ color: "#c9a227" }} />}
+                  {demoMode ? "Demo Sample Preview" : `Upload ${stageLabel} Image`}
+                  {demoMode && (
+                    <span className="ml-auto text-xs px-2 py-0.5 rounded-full font-medium"
+                      style={{ background: "rgba(168,85,247,0.15)", border: "1px solid rgba(168,85,247,0.35)", color: "#c084fc" }}>
+                      DEMO
+                    </span>
+                  )}
                 </h3>
 
                 {/* Drop zone */}
@@ -583,23 +726,36 @@ export function DetectionSection() {
                   className="w-full mt-5 py-3.5 rounded-xl text-white font-medium transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]"
                   style={{
                     background: imagePreview && !analyzing
-                      ? "linear-gradient(135deg, #2d6a4f, #1a5c3a)"
+                      ? demoMode
+                        ? "linear-gradient(135deg, #6d28d9, #7c3aed)"
+                        : "linear-gradient(135deg, #2d6a4f, #1a5c3a)"
                       : "rgba(255,255,255,0.08)",
-                    border: "1px solid rgba(201,162,39,0.3)",
-                    boxShadow: imagePreview && !analyzing ? "0 0 20px rgba(45,106,79,0.3)" : "none",
+                    border: demoMode
+                      ? "1px solid rgba(168,85,247,0.4)"
+                      : "1px solid rgba(201,162,39,0.3)",
+                    boxShadow: imagePreview && !analyzing
+                      ? demoMode
+                        ? "0 0 20px rgba(109,40,217,0.35)"
+                        : "0 0 20px rgba(45,106,79,0.3)"
+                      : "none",
                   }}>
                   {analyzing ? (
                     <>
                       <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
                         <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.3)" strokeWidth="3" />
-                        <path d="M12 2a10 10 0 0 1 10 10" stroke="#c9a227" strokeWidth="3" strokeLinecap="round" />
+                        <path d="M12 2a10 10 0 0 1 10 10"
+                          stroke={demoMode ? "#c084fc" : "#c9a227"} strokeWidth="3" strokeLinecap="round" />
                       </svg>
-                      Analysing {stageLabel}...
+                      {demoMode ? "Running Demo Analysis..." : `Analysing ${stageLabel}...`}
                     </>
                   ) : (
                     <>
-                      <Microscope className="w-4 h-4" style={{ color: "#c9a227" }} />
-                      Run Stage {activeStage === "leaf" ? "1" : "2"} Analysis
+                      {demoMode
+                        ? <Sparkles className="w-4 h-4" style={{ color: "#c084fc" }} />
+                        : <Microscope className="w-4 h-4" style={{ color: "#c9a227" }} />}
+                      {demoMode
+                        ? "Re-run Demo Analysis"
+                        : `Run Stage ${activeStage === "leaf" ? "1" : "2"} Analysis`}
                     </>
                   )}
                 </button>
